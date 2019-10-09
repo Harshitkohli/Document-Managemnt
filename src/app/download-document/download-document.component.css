@@ -1,0 +1,4 @@
+footer-cell:first-of-type, mat-header-cell:first-of-type {
+    padding-left: 9px;
+    margin: 10px !important;
+}

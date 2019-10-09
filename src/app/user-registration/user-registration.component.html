@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="login-form">
+        <form ngNativeValidate class="form-group"name="user-registration"  method="post" >
+            <h2 class="text-center">{{title}}</h2>
+            <div class="bg">
+            </div>
+            <div class="panel panel-default" [ngStyle]="{'background-image': getUrl()}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control"
+                [(ngModel)]="userName"
+                placeholder="User Name" name="userID" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required 
+                 name="userPassword" [(ngModel)]="userPassword" minlength="7"  >
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirm Password" required 
+                 name="userPassword" [(ngModel)]="confirmPassword"minlength="7"  > 
+            </div>
+         <div *ngIf="passwordError">
+           <p>Password should be same</p>
+         </div>
+            <div class="form-group" [formGroup]="userForm">
+               
+              <select formControlName="userControl"> 
+                     
+                <option *ngFor="let user of userList" [value]="user">
+                {{user}}
+                </option>
+                </select>
+                </div>
+            
+                <div class="form-group">
+                 
+                  <input type="email" class="form-control" name="emailId" id="" 
+                  aria-describedby="emailHelpId" placeholder="Email Id">
+                </div>
+                <div class="form-group">
+                 
+                    <input type="number" class="form-control" name="phoneNumber" id="" 
+                    aria-describedby="phoneNumber" placeholder="Phone Number" min=10>
+                  </div>
+         
+            <div class="form-group">
+                <button class="btn btn-primary btn-block"  >Register
+                </button>
+            </div>
+            <div class="link">
+                
+                <p class="pull-left"><a routerLink="/userRegistration" routerLinkActive="active">
+                    Login</a></p>
+                
+                    <a href="#" class="pull-right">Forgot Password?</a>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>  

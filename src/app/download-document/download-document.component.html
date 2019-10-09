@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <div class="row">
+    <div class="col-sm-12 col-md-3">
+      <app-links></app-links>
+    </div>
+    <div class="col-sm-12 col-md-9">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="card">
+              <div class="card-header">
+                Search Document
+              </div>
+              <div class="card-body">
+                  <form ngNativeValidate name="downloadDocumentForm" 
+                   method="post" name="document-form">
+                      <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                      <div class="form-group">
+                        <label for="docName">Document Name</label>
+                        <input type="text" class="form-control" id="docName" 
+                        name="docName" placeholder="Document Name" [(ngModel)]="
+                        documentManagmentModel.docName">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <div class="form-group">
+                        <label for="contentId">Content Id</label>
+                        <input type="text" class="form-control" id="contentId" 
+                        name="contentId" placeholder="Content Id"
+                        [(ngModel)]="documentManagmentModel.contentId">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <div class="form-group">
+                        <label for="docDesc">Content Type</label>
+                        <select #documentTypeList class="form-control" id="docDesc" name="docDesc">
+                            <option *ngFor="let doc of documentTypeModel" [value]="doc.docTypeID">
+                                {{doc.docTypeDesc}}
+                              </option>
+                        </select>
+                     
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="form-group">
+                        <label for="startDate">Uploaded Date Start Range</label>
+                        <my-date-picker name="startDate" [options]="myDatePickerOptions" 
+                        [(ngModel)]="documentManagmentModel.startingDate">
+                          </my-date-picker>
+                          </div>
+                      </div>
+                      <div class="col-sm-12 col-md-4">
+                          <div class="form-group">
+                          <label for="endDate">Uploaded Date End Range</label>
+                          <my-date-picker name="endDate" [options]="myDatePickerOptions" 
+                          [(ngModel)]="documentManagmentModel.endDate"  >
+                            </my-date-picker>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                              <label for="uploaderID">Uploader ID:</label>
+                              <input type="text" disabled class="form-control" id="uploaderID"
+                               name="uploaderID" placeholder="Uploader Id">
+                            </div>
+                            <button type="button" (click)="searchDocument(documentTypeList)" class="btn btn-info">
+                                <span class="glyphicon glyphicon-search"></span> Search
+                              </button>
+                          </div>
+                          </div>                 
+                         <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <mat-table class="documnet-table mat-elevation"
+                                 [dataSource]="searchDataModel">
+  
+                                 <ng-container matColumnDef="Content-ID">
+                                    <mat-header-cell *matHeaderCellDef>Content-ID</mat-header-cell>
+                                    <mat-cell class="description-cell"
+                                              *matCellDef="let document">{{document.contentId}}</mat-cell>
+                                </ng-container>
+                                    <ng-container matColumnDef="Document_Name">
+                                        <mat-header-cell *matHeaderCellDef>Document_Name</mat-header-cell>
+                                        <mat-cell class="description-cell"
+                                                  *matCellDef="let document">
+                                                  <a href="{{"javascript:goToFile()}}> test</a>
+                                                </mat-cell>
+                                                    
+                                    </ng-container>
+                                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                    
+                                    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+                                    
+                                </mat-table>
+                            </div>
+                          </div> 
+    
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+
+<!-- <div class="pull-right">
+    <a href="#" class="btn btn-primary"> Logout </a>
+  </div>
+
+  <div class="download-form">
+    <h2>Search Document</h2>
+
+  </div>
+
+  <div class="download-form">
+    <p class="pull-left"> Document Name:&nbsp; </p>
+    <input type="text" name="" id="" class="col-md-2">
+    <p class="pull-left">&nbsp;Content Id:&nbsp; </p>
+    <input type="text" name="" id="" class="col-md-2">
+    Document Desc
+    <div class="download-form" [formGroup]="downloadDocumentForm">
+      <select #documentTypeList formControlName="documentControl" id="documentDesc">
+        <option *ngFor="let document of documentTypeModel" [value]="document.docTypeID">
+          {{document.docTypeDesc}}
+        </option>
+      </select>
+
+    </div>
+    <p class="pull-left">&nbsp;Uploader Id:&nbsp;</p>
+        <input type="text" name="" id="" class="col-md-2">  
+  </div>
+
+
+  <div class="form-group">
+    <p class="pull-left">Uploaded Date</p>
+    <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="startDate" class="col-md-2">
+    </my-date-picker>
+    <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="endDate" class="col-md-2">
+    </my-date-picker>
+  </div>
+</div> -->

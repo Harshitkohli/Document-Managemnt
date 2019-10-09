@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+            <app-links></app-links>
+        </div>
+        <div class="col-sm-12 col-md-9">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Uploaded Documents
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="form-group">
+                                                <label for="docDesc">Document Description</label>
+                                                <select #documentTypeList class="form-control" id="docDesc"
+                                                    name="docDesc">
+                                                    <option *ngFor="let doc of documentTypeModel"
+                                                        [value]="doc.docTypeID">
+                                                        {{doc.docTypeDesc}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="bootstrap-filestyle input-group">
+                                                    <span class="group-span-filestyle" tabindex="1">
+                                                        <input type="file" ng2FileSelect [uploader]="uploader" multiple
+                                                            (change)="fileData($event,
+                                                                            documentTypeList.value)"><br />
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                            <input type="button" (click)="uploadDocument(documentTypeList.value)"
+                                                class="btn btn-lg btn-primary" name="button" value="Upload" />
+                                        </div>
+                                        <div class="col-sm-12 col-md-8">
+                                            <div class="card-body">
+                                                <tr>
+                                                    <table border="1">
+                                                        <tr *ngIf="this.tableShow">
+                                                            <th>
+                                                                File Names
+                                                            </th>
+                                                            <th>
+                                                                Remove
+                                                            </th>
+
+                                                        </tr>
+                                                        <tr *ngFor="let item of uploader.queue">
+
+                                                            <td>
+                                                                {{item.file.name}}
+                                                            </td>
+                                                            <td>
+                                                                <input type="button"
+                                                                    (click)="removeDocument(item,documentTypeList.value)"
+                                                                    name="button" value="Remove" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </tr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
