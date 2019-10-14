@@ -19,6 +19,10 @@ import { UploadDocumentsComponent } from './dashboard/upload-documents/upload-do
 import { DownloadDocumentComponent } from './download-document/download-document.component';
 import { MyDatePickerModule } from 'mydatepicker';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +32,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     HeaderComponent,
     LinksComponent,
     UploadDocumentsComponent,
-    DownloadDocumentComponent,
-    
+    DownloadDocumentComponent
   ],
   imports: [  
     ReactiveFormsModule,
@@ -40,8 +43,10 @@ import { MyDatePickerModule } from 'mydatepicker';
     FileUploadModule,
     MyDatePickerModule,
     DataTablesModule,
-    MatTableModule
+    MatTableModule,
+    NgxSpinnerModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

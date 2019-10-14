@@ -1,10 +1,14 @@
+
 export class DocumentMangmentModel{
+    downloadContentID:String;
+    fileName:String;
     contentId:Number;
     userId:String;
     docName:String;
-    startingDate:Date;
-    endDate:Date;
+    startingDate:any;
+    endDate:any;
     typeOfDoc:any;
-    
+    inputStartDate:any;
+    inputEndDate:any;
 
 }

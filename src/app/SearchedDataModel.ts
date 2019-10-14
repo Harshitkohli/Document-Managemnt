@@ -7,7 +7,7 @@ export class SearchedDataModel{
     id:Number;
     status:String;
     ucmURL:String;
-    uploadeDate:Date;
+    uploadeDate:any;
     uploaderId:String;
     uploaderRole:any;
 
