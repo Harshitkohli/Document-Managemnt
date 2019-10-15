@@ -38,5 +38,9 @@ export class HttpServiceService {
     return this._http.post(this.intialUrl+"getDocuments",documentManagment,
     this._header.getHeader()).pipe(map(res=>res));
   }
+  getFile(documentManagment :DocumentMangmentModel){
+    return this._http.post(this.intialUrl+"getFile",documentManagment,
+    this._header.getHeader()).pipe(map(res=>res));
+  }
 
 }

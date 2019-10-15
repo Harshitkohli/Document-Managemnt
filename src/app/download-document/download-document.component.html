@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                       <div class="form-group">
-                        <label for="contentId">Content Id</label>
+                        <label for="contentId">{{this.contentId}}</label>
                         <input type="text" class="form-control" id="contentId" 
                         name="contentId" placeholder="Content Id"
                         [(ngModel)]="documentManagmentModel.contentId">
@@ -46,19 +46,25 @@
                      
                       </div>
                     </div>
+                    
                     <div class="col-sm-12 col-md-4">
                         <div class="form-group">
                         <label for="startDate">Uploaded Date Start Range</label>
-                        <my-date-picker name="startDate" [options]="myDatePickerOptions" 
-                        [(ngModel)]="documentManagmentModel.startingDate">
+                        
+                        <my-date-picker name="documentManagmentModel.inputStartDate" 
+                        [options]="myDatePickerOptions"
+                        [(ngModel)]="documentManagmentModel.inputStartDate" 
+                        >
                           </my-date-picker>
                           </div>
                       </div>
                       <div class="col-sm-12 col-md-4">
                           <div class="form-group">
                           <label for="endDate">Uploaded Date End Range</label>
-                          <my-date-picker name="endDate" [options]="myDatePickerOptions" 
-                          [(ngModel)]="documentManagmentModel.endDate"  >
+                          <my-date-picker name="documentManagmentModel.inputEndDate" 
+                          
+                          [options]="myDatePickerOptions" 
+                          [(ngModel)]="documentManagmentModel.inputEndDate"  >
                             </my-date-picker>
                             </div>
                         </div>
@@ -72,33 +78,42 @@
                                 <span class="glyphicon glyphicon-search"></span> Search
                               </button>
                           </div>
-                          </div>                 
-                         <div class="col-sm-12 col-md-4">
+                          </div>    
+                                
+                         <div  class="col-sm-12 col-md-8">
                             <div class="form-group">
-                                <mat-table class="documnet-table mat-elevation"
-                                 [dataSource]="searchDataModel">
-  
-                                 <ng-container matColumnDef="Content-ID">
-                                    <mat-header-cell *matHeaderCellDef>Content-ID</mat-header-cell>
-                                    <mat-cell class="description-cell"
-                                              *matCellDef="let document">{{document.contentId}}</mat-cell>
-                                </ng-container>
-                                    <ng-container matColumnDef="Document_Name">
-                                        <mat-header-cell *matHeaderCellDef>Document_Name</mat-header-cell>
-                                        <mat-cell class="description-cell"
-                                                  *matCellDef="let document">
-                                                  <a href="{{"javascript:goToFile()}}> test</a>
-                                                </mat-cell>
-                                                    
-                                    </ng-container>
-                                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                                    
-                                    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-                                    
-                                </mat-table>
+                                <table datatable [dtOptions]="dtOptions" 
+                                [dtTrigger]="dtTrigger" 
+                                class="row-border hover" >
+                                    <thead *ngIf="tableShow">
+                                      <tr>
+                                        <th>{{this.contentId}}</th>
+                                        <th>Uploaded Date</th>
+                                        <th>Document</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let document of searchDataModel">
+                                        <td>{{ document.contentId}}</td>
+                                        <td>{{document.uploadeDate | date: 'dd-MMM-yyyy'}}</td>
+                                   <td>
+                                     <a target="_blank" 
+                                          (click)="getFile(document.contentId,document.documentName)"
+                                          >
+                                          {{document.documentName}}</a>
+                                        </td>
+                                        
+                                     
+                                      <!----  <td><a href="http://localhost:8080/DocumentManagment/getFile" target="_blank" 
+                                          (click)="getFile(document.contentId,document.documentName)"
+                                          >
+                                          {{document.documentName}}</a></td> -->
+                                      </tr>
+                                    </tbody>
+                                    </table>
                             </div>
                           </div> 
-    
+                        
                 </form>
               </div>
             </div>
