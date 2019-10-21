@@ -97,10 +97,9 @@
                                         <td>{{ document.contentId}}</td>
                                         <td>{{document.uploadeDate | date: 'dd-MMM-yyyy'}}</td>
                                    <td>
-                                     <a target="_blank" 
-                                          (click)="getFile(document.contentId,document.documentName)"
-                                          >
-                                          {{document.documentName}}</a>
+                                     
+                                  <button (click)="getFile(document.contentId,document.documentName)"  name="test">
+                                    </button>
                                         </td>
                                         
                                      

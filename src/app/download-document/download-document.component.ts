@@ -106,12 +106,10 @@ getFile(contentId,docName){
   this.documentManagmentModel.downloadContentID=contentId;
   this.documentManagmentModel.fileName=docName;
 return this._service.getFile(this.documentManagmentModel).subscribe((res)=>{
-        //window.location.href=res_body;
-     
+        //window.location.href=res_body
         // alert(res.blob());
          let blob:any = new Blob([res.text()], { type: 'image/jpeg; charset=utf-8' });
-      //  const blob:any = new Blob([res.text()], { type: 'text/json; charset=utf-8' });
-  
+      //const blob:any = new Blob([res.text()], { type: 'text/json; charset=utf-8' });
         saveAs(blob, docName);
         //window.location.href = res.url;
 
