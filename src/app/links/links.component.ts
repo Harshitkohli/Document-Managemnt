@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  Routes } from '@angular/router';
+import { loginData } from '../LoginModel';
 
 
 
@@ -10,6 +11,7 @@ import {  Routes } from '@angular/router';
 })
 export class LinksComponent implements OnInit {
   private _routes:Routes;
+  private loginData:loginData;
 data(){
 
   return false;
@@ -17,6 +19,7 @@ data(){
   constructor() { }
 
   ngOnInit() {
+   this.loginData=this.loginData;
   }
 
 }

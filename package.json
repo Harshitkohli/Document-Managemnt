@@ -28,6 +28,7 @@
     "datatables.net": "^1.10.20",
     "datatables.net-bs4": "^1.10.20",
     "datatables.net-dt": "^1.10.20",
+    "file-saver": "^2.0.2",
     "jquery": "^3.4.1",
     "mydatepicker": "^2.6.6",
     "ng2-file-upload": "^1.3.0",

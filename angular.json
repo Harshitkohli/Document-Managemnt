@@ -29,7 +29,8 @@
               "src/styles.css"
             ],
             "scripts": ["node_modules/jquery/dist/jquery.min.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js"]
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/file-saver/src/FileSaver.js"]
           },
           "configurations": {
             "production": {

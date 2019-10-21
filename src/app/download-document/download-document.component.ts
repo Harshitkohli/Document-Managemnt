@@ -9,7 +9,7 @@ import { DocumentMangmentModel } from '../DocumentManagmentModel';
 import  {SearchedDataModel} from '../SearchedDataModel';
 import   { Subject } from 'rxjs';
 import { DataTableDirective } from 'angular-datatables';
-
+import  {saveAs} from 'file-saver';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
@@ -35,6 +35,7 @@ export class DownloadDocumentComponent implements OnDestroy,OnInit {
   downloadDocumentForm:FormGroup;
   dtOptions: DataTables.Settings = {};
   tableShow:boolean;
+  fileUrl;
   //dtTrigger: Subject = new Subject();
   clients: any[];
   displayedColumns = ["Content-ID","Document_Name"];
@@ -106,13 +107,16 @@ getFile(contentId,docName){
   this.documentManagmentModel.fileName=docName;
 return this._service.getFile(this.documentManagmentModel).subscribe((res)=>{
         //window.location.href=res_body;
-        console.log(res.blob());
-        const blob = new Blob([res.text()],{type:'image/jpeg'});
-        let fileURL = (window.URL).createObjectURL(blob);
-        const url= window.URL.createObjectURL(blob);
+     
+        // alert(res.blob());
+         let blob:any = new Blob([res.text()], { type: 'image/jpeg; charset=utf-8' });
+      //  const blob:any = new Blob([res.text()], { type: 'text/json; charset=utf-8' });
+  
+        saveAs(blob, docName);
+        //window.location.href = res.url;
+
        
-       console.log(url);
-        window.open(fileURL);
+ 
   });
  
 

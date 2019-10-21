@@ -27,4 +27,12 @@ export class HeaderServiceService {
     option = new RequestOptions({headers:headers});
     return option;
   }
+
+  getDownloadHeaders(){
+    let option: any;
+    let headers = new Headers();
+    headers.append('Access-Control','Allow-Origin');
+    option = new RequestOptions({headers:headers});
+    return option;
+  }
 }
